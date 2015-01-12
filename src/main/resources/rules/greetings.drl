@@ -1,0 +1,9 @@
+package org.integrallis.greeting
+
+import org.integrallis.greeting.Person.Education;
+import org.integrallis.greeting.Person.Gender;
+import org.integrallis.greeting.Person.MaritalStatus;
+
+/**
+ * GreetingAndSalutation Rules
+ */

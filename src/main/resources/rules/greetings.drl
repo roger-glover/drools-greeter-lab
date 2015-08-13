@@ -7,3 +7,100 @@ import org.integrallis.greeting.Person.MaritalStatus;
 /**
  * GreetingAndSalutation Rules
  */
+
+rule "Morning" 
+    when
+        TimeOfDay( hour < 12 )
+        p : Person()
+        not GreetingAndSalutation ( person == p )
+    then
+        GreetingAndSalutation g = new GreetingAndSalutation();
+        g.setGreeting( "Good Morning" );
+        g.setPerson(p);
+        insert( g );
+end
+
+rule "Afternoon" 
+    when
+        TimeOfDay( hour >= 12, hour < 18 )
+        p : Person()
+        not GreetingAndSalutation ( person == p )
+    then
+        GreetingAndSalutation g = new GreetingAndSalutation();
+        g.setGreeting( "Good Afternoon" );
+        g.setPerson(p);
+        insert( g );
+end
+
+rule "Evening" 
+    when
+        TimeOfDay( hour >=18, hour < 23 )
+        p : Person()
+        not GreetingAndSalutation ( person == p )
+    then
+        GreetingAndSalutation g = new GreetingAndSalutation();
+        g.setGreeting( "Good Evening" );
+        g.setPerson(p);
+        insert( g );
+end
+
+rule "Night" 
+    when
+        TimeOfDay( hour >= 23 )
+        p : Person()
+        not GreetingAndSalutation ( person == p )
+    then
+        GreetingAndSalutation g = new GreetingAndSalutation();
+        g.setGreeting( "Good Night" );
+        g.setPerson(p);
+        insert( g );
+end
+
+rule "Doctor"
+    when
+        p : Person( education == Education.PHD )
+        g : GreetingAndSalutation( person == p, !complete )
+    then
+        g.setSalutation( "Dr." );
+        update( g );
+end
+
+rule "Little"
+    when
+        p : Person( age < 11, education != Education.PHD )
+        g : GreetingAndSalutation( person == p, !complete )
+    then
+        g.setSalutation( "Little" );
+        update( g );
+end
+
+rule "Mister"
+    when
+        p : Person ( age >= 11, gender == Gender.MALE, education != Education.PHD )
+        g : GreetingAndSalutation( person == p, !complete )
+    then
+        g.setSalutation( "Mr." );
+        update( g );
+end
+
+rule "Miz"
+    when
+        p : Person( age >= 11, gender == Gender.FEMALE, maritalStatus == MaritalStatus.SINGLE, education != Education.PHD )
+        g : GreetingAndSalutation( person == p, !complete )
+    then
+        g.setSalutation( "Ms." );
+        update( g );
+end
+
+rule "Missus"
+    when
+        p : Person( age >= 11, gender == Gender.FEMALE, maritalStatus == MaritalStatus.MARRIED, education != Education.PHD )
+        g : GreetingAndSalutation( person == p, !complete )
+    then
+        g.setSalutation( "Mrs." );
+        update( g );
+end
+
+query "GetAllGreetingAndSalutations"
+    greeting : GreetingAndSalutation()
+end

@@ -33,8 +33,9 @@ public class SimpleGreetingAndSalutationsTest extends BaseDroolsTestCase {
 		assertEquals("There should be only one greeting and salutation", 1, results.size());
 
 		for ( QueryResultsRow row : results ) {
-		    GreetingAndSalutation greeting = (GreetingAndSalutation) row.get( "greeting" );
-		    assertEquals("Greeting should be Good Morning", "Good Morning", greeting.getGreeting());
+			//TODO cast this appropriately ==> row.get( "greeting" );
+			String greeting = "";
+		    assertEquals("Greeting should be Good Morning", "Good Morning", greeting);
 		}
 	}
 	
@@ -55,8 +56,9 @@ public class SimpleGreetingAndSalutationsTest extends BaseDroolsTestCase {
 		assertEquals("There should be only one greeting and salutation", 1, results.size());
 
 		for ( QueryResultsRow row : results ) {
-		    GreetingAndSalutation greeting = (GreetingAndSalutation) row.get( "greeting" );
-		    assertEquals("Greeting should be Good Afternoon", "Good Afternoon", greeting.getGreeting());
+			//TODO cast this appropriately ==> row.get( "greeting" );
+			String greeting = "";
+		    assertEquals("Greeting should be Good Morning", "Good Morning", greeting);
 		}
 	}	
 	
@@ -77,8 +79,9 @@ public class SimpleGreetingAndSalutationsTest extends BaseDroolsTestCase {
 		assertEquals("There should be only one greeting and salutation", 1, results.size());
 
 		for ( QueryResultsRow row : results ) {
-		    GreetingAndSalutation greeting = (GreetingAndSalutation) row.get( "greeting" );
-		    assertEquals("Greeting should be Good Evening", "Good Evening", greeting.getGreeting());
+			//TODO cast this appropriately ==> row.get( "greeting" );
+			String greeting = "";
+		    assertEquals("Greeting should be Good Morning", "Good Morning", greeting);
 		}
 	}
 	
@@ -99,8 +102,9 @@ public class SimpleGreetingAndSalutationsTest extends BaseDroolsTestCase {
 		assertEquals("There should be only one greeting and salutation", 1, results.size());
 
 		for ( QueryResultsRow row : results ) {
-		    GreetingAndSalutation greeting = (GreetingAndSalutation) row.get( "greeting" );
-		    assertEquals("Greeting should be Good Night", "Good Night", greeting.getGreeting());
+			//TODO cast this appropriately ==> row.get( "greeting" );
+			String greeting = "";
+		    assertEquals("Greeting should be Good Morning", "Good Morning", greeting);
 		}
 	}
 }

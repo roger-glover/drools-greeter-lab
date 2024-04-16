@@ -36,13 +36,14 @@ public class GreetingsAndSalutationsTest extends BaseDroolsTestCase {
 	
 		knowledgeSession.fireAllRules();
 		
-		QueryResults results = knowledgeSession.getQueryResults( "GetAllGreetingAndSalutations" );
+		QueryResults results = knowledgeSession.getQueryResults( "GetAllGreetingsAndSalutations" );
 		
 		assertEquals("There should be only one greeting and salutation", 1, results.size());
 		
 		for ( QueryResultsRow row : results ) {
-		    GreetingAndSalutation greeting = (GreetingAndSalutation) row.get( "greeting" );
-		    assertEquals(expectedGreeting, greeting.greetAndSalute());
+		    //TODO cast this appropriately ==> row.get( "greeting" );
+			String greeting = "";
+		    assertEquals(expectedGreeting, greeting);
 		}		
 	}
 	
